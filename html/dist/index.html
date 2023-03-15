@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>フレームクロップ</title>
+    <meta name="viewport" content="width=device-width">
+  <script type="module" crossorigin src="/assets/index-13ef232e.js"></script>
+  <link rel="stylesheet" href="/assets/index-93006f56.css">
+</head>
+
+<body>
+    <main id="main-container" class="m-3">
+        <h2>フレームクロップ</h2>
+        <section class="mt-3" id="sectionFile">
+            <div>①画像ファイルを選択してください</div>
+            <div class="row align-items-center">
+                <div class="col-auto pe-0">
+                    <label class="btn btn-primary">
+                        <input type="file" id="fileSelect" class="d-none" accept=".jpg,.jpeg,.gif,.png,image/jpg,image/jpeg,image/gif,image/png">画像を選択
+                    </label>
+                    <span></span>
+                </div>
+            </div>
+        </section>
+        <section class="d-none" id="sectionImage">
+            <section class="mt-3" id="sectionRatio">
+                <div>②縦横比を選択してください</div>
+                <div>※「５：７」はA2サイズやB2サイズといった規格サイズの比率です</div>
+                <input type="radio" class="btn-check" name="ratio" id="ratio_portrait" value="1.4" checked>
+                <label class="btn btn-outline-primary me-1" for="ratio_portrait">横７：縦５</label>
+                <input type="radio" class="btn-check" name="ratio" id="ratio_landscape" value="0.7142857142857143">
+                <label class="btn btn-outline-primary me-1" for="ratio_landscape">横５：縦７</label>
+                <input type="radio" class="btn-check" name="ratio" id="ratio_square" value="1">
+                <label class="btn btn-outline-primary me-1" for="ratio_square">横１：縦１</label>
+            </section>
+
+            <section class="mt-3" id="sectionTrim">
+                <div>③クロップエリア内で画像を配置してください</div>
+                <div class="component">
+                    <div class="overlay">
+                        <div class="overlay-inner">
+                        </div>
+                    </div>
+                    <div class="resize-image-area"></div>
+                </div>
+            </section>
+
+            <section class="mt-3" id="sectionControl">
+                <div class="mt-3">
+                    <button class="btn btn-primary" id="showResult" data-bs-toggle="modal" data-bs-target="#result-modal">クロップ結果を表示する</button>
+                </div>
+                <div class="mt-3">
+                    <button type="button" class="btn btn-secondary destroyResult">最初からやり直す</button>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="result-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">クロップ結果</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="d-grid p-3 bg-secondary result-image-container">
+                            <img class="mx-auto" id="result-image" src="">
+                        </div>
+                        <div class="d-block">
+                            <a href="#" download="image.png" class="btn btn-primary mx-auto mt-2 w-25 d-block" id="result-download">ダウンロード</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="w-100 row justify-content-between">
+                        <button type="button" class="btn btn-secondary col-auto d-block" data-bs-dismiss="modal">閉じる</button>
+                        <button type="button" class="btn btn-secondary col-auto d-block destroyResult" data-bs-dismiss="modal">最初からやり直す</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+</body>
+
+</html>
